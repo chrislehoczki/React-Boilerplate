@@ -3,7 +3,7 @@
 var path = process.cwd();
 var passport = require('passport');
 
-var BookHandler = require("../controllers/bookHandler.js")
+var BookHandler = require("../controllers/serverHandler.js")
 
 //REACT
 var React = require('react');
@@ -18,7 +18,7 @@ var Users = require('../models/users.js');
 
 module.exports = function (app, passport) {
 
-	var bookHandler = new BookHandler();
+	var serverHandler = new ServerHandler();
 
 	//////////////////////////////						
 	//AUTHENTICATION STRATEGIES///
@@ -124,7 +124,7 @@ module.exports = function (app, passport) {
 
 	//ADD BOOKS 
 	app.route('/api/addbook/:book/:author/:img(*)') 
-		.get(bookHandler.addBook)
+		.get(serverHandler.addBook)
 
 
 	//////////////////////////////						
@@ -134,13 +134,13 @@ module.exports = function (app, passport) {
 
 		//ADD CITY AND STATE
 	app.route("/api/userinfo")
-		.post(bookHandler.addUserInfo)
+		.post(serverHandler.addUserInfo)
 
 		//CHANGE PASSWORD
 	app.route("/changepass")
-		.post(bookHandler.changePass)
+		.post(serverHandler.changePass)
 
 		//GET USER DETAILS
 	app.route("/api/userdata")
-		.get(bookHandler.getUserDetails)
+		.get(serverHandler.getUserDetails)
 };
